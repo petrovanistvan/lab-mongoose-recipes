@@ -40,8 +40,11 @@ mongoose
     //  console.log(recipe.title);
     //})
     //  });
-    Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese' }, { duration: 100 })
-  .then(console.log("good"))
+    //Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese' }, { duration: 100 })
+  //.then(console.log("good"))
+  //.catch(error => console.log("bad", error));
+  Recipe.deleteOne({ title: 'Carrot Cake' })
+  .then( deletedRecipe => console.log("good", deletedRecipe))
   .catch(error => console.log("bad", error));
  })
   .catch(error => {
