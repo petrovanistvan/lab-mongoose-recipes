@@ -45,6 +45,7 @@ mongoose
   //.catch(error => console.log("bad", error));
   Recipe.deleteOne({ title: 'Carrot Cake' })
   .then( deletedRecipe => console.log("good", deletedRecipe))
+  .then (() => mongoose.connection.close())
   .catch(error => console.log("bad", error));
  })
   .catch(error => {
