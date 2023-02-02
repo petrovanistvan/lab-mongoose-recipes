@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema, Model} = mongoose;
+const recipeDB = require("./data.json");
 
 // Import of the model Recipe from './models/Recipe.model.js'
 const Recipe = require('./models/Recipe.model');
@@ -28,13 +29,18 @@ mongoose
       duration: 60,
       creator: "Istvan and Dennis",
     };
-    Recipe.create(recipe1, (error, recipe) => {
-      if (error) {
-        console.log("It's not functioning:", error);
-      }
-      console.log("Recipe has been saved and its value is:", recipe);
-    });
-  })
+    //Recipe.create(recipe1, (error, recipe) => {
+    //  if (error) {
+    //    console.log("It's not functioning:", error);
+    //  }
+    //  console.log("Recipe has been saved and its value is:", recipe);
+    //});
+    Recipe.insertMany(recipeDB) 
+    .then ((recipe) => { recipe.forEach((recipe) => {
+      console.log(recipe.title);
+    })
+      });
+ })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
