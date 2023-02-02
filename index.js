@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {Schema, Model} = mongoose;
 
 // Import of the model Recipe from './models/Recipe.model.js'
 const Recipe = require('./models/Recipe.model');
@@ -17,6 +18,22 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    const recipe1 = {
+      title: "Sauerkraut soup",
+      level: "Easy Peasy",
+      ingredients: ["water", "kraut", "sauer", "salt", "pepper"],
+      cuisine: "german",
+      dishType: "soup",
+      image: "https://www.gutekueche.at/storage/media/recipe/28115/resp/sauerkrautsuppe___webp_620_413.webp",
+      duration: 60,
+      creator: "Istvan and Dennis",
+    };
+    Recipe.create(recipe1, (error, recipe) => {
+      if (error) {
+        console.log("It's not functioning:", error);
+      }
+      console.log("Recipe has been saved and its value is:", recipe);
+    });
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
