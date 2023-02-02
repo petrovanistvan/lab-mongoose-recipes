@@ -36,10 +36,13 @@ mongoose
     //  console.log("Recipe has been saved and its value is:", recipe);
     //});
     Recipe.insertMany(recipeDB) 
-    .then ((recipe) => { recipe.forEach((recipe) => {
-      console.log(recipe.title);
-    })
-      });
+    //.then ((recipe) => { recipe.forEach((recipe) => {
+    //  console.log(recipe.title);
+    //})
+    //  });
+    Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese' }, { duration: 100 })
+  .then(console.log("good"))
+  .catch(error => console.log("bad", error));
  })
   .catch(error => {
     console.error('Error connecting to the database', error);
